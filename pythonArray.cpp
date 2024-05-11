@@ -81,6 +81,18 @@ class Point{
         T &operator [](int index){
             return Array[index];
         }
+        Point& operator=(const Point& somelist) {
+            if (this != &somelist) { // Self-assignment check
+            delete []Array; // Delete old array
+            Asize = somelist.Asize; // Copy size
+            Array = new T[Asize]; // Allocate new array
+            for(int i = 0; i < Asize; ++i) {
+                Array[i] = somelist.Array[i]; // Copy elements
+                }
+            }
+            return *this; // Return a reference to the current object
+}
+
 
         ~Point(){
             delete []Array;
